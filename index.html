@@ -1,0 +1,1867 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="World Tec - Soluções tecnológicas inovadoras para Angola">
+  <meta name="keywords" content="tecnologia, Angola, soluções digitais, automação, sistemas inteligentes">
+  <meta property="og:title" content="World Tec - Tecnologia para Angola">
+  <meta property="og:description" content="Soluções tecnológicas inovadoras para conectar pessoas e negócios em Angola.">
+  <meta property="og:image" content="/favicon_io/og-image.jpg">
+  <meta property="og:url" content="https://www.wtec.store">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="/favicon_io/favicon.ico">
+  <link rel="preload" href="jovens.jpeg" as="image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="manifest" href="/manifest.json">
+  <title>World Tec - Tecnologia para Angola</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXX"></script>
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #0d1117;
+      color: #d1d5db;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body.light-theme {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    a:focus, button:focus, input:focus, textarea:focus, select:focus {
+      outline: 2px solid #ff00ff;
+      outline-offset: 2px;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    body.light-theme .modal {
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .modal-content {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      animation: slideIn 0.3s ease;
+      border: 2px solid #ff00ff;
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+    }
+
+    body.light-theme .modal-content {
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffff;
+      margin-bottom: 20px;
+    }
+
+    body.light-theme .modal-content h2 {
+      color: #ff00ff;
+    }
+
+    .modal-content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    body.light-theme .modal-content p {
+      color: #555;
+    }
+
+    .modal-content img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 3px solid #00ffff;
+    }
+
+    body.light-theme .modal-content img {
+      border: 3px solid #ff00ff;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      background-color: #ff00ff;
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .modal-content button:hover {
+      background-color: #ff33ff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* BANNER */
+    .banner {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+      background: #0d1117;
+      overflow: hidden;
+    }
+
+    body.light-theme .banner {
+      background: #e0e0e0;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      animation: fadeInUp 2s ease-out forwards;
+    }
+
+    body.light-theme .banner-content {
+      color: #333;
+    }
+
+    .banner h1 {
+      font-size: 4rem;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(45deg, #00ffff, #00b7b7, #00ffaa);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+      animation: gradientShift 5s ease-in-out infinite;
+    }
+
+    body.light-theme .banner h1 {
+      background: linear-gradient(45deg, #ff00ff, #00b7b7, #00ffaa);
+    }
+
+    .banner p {
+      font-size: 1.8rem;
+      color: #ccc;
+      margin-bottom: 1rem;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body.light-theme .banner p {
+      color: #555;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 0, 255, 0.5); }
+      50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 0, 255, 0.8); }
+      100% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 0, 255, 0.5); }
+    }
+
+    /* BOTÃO FLUTUANTE */
+    .floating-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 40px;
+      background-color: #ff00ff;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      border-radius: 12px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      animation: pulse 2s infinite;
+      position: relative;
+    }
+
+    .btn:hover {
+      background-color: #ff33ff;
+      transform: scale(1.05);
+    }
+
+    /* BACK TO TOP */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #ff00ff;
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      padding: 10px 15px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: none;
+      z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+
+    .back-to-top:hover {
+      background-color: #ff33ff;
+      transform: scale(1.05);
+    }
+
+    .back-to-top.show {
+      display: block;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(0, 0, 0, 0.85);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 255, 255, 0.15);
+    }
+
+    body.light-theme .navbar {
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    .logo {
+      height: 80px;
+      filter: brightness(1.2);
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+      transition: filter 0.3s ease;
+    }
+
+    body.light-theme .logo {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo:hover {
+      filter: brightness(1.4);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #00ffff;
+      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+      transition: color 0.3s ease;
+    }
+
+    body.light-theme .nav-links li a {
+      color: #ff00ff;
+    }
+
+    .nav-links li a:hover {
+      color: #fff;
+    }
+
+    body.light-theme .nav-links li a:hover {
+      color: #333;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: #00ffff;
+      margin: 2px 0;
+      transition: all 0.3s ease;
+    }
+
+    body.light-theme .menu-toggle span {
+      background-color: #ff00ff;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* SOBRE */
+    .sobre {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px;
+      background: #0a0a0a;
+      gap: 40px;
+    }
+
+    body.light-theme .sobre {
+      background: #ffffff;
+    }
+
+    .sobre-content {
+      max-width: 600px;
+      text-align: left;
+    }
+
+    .sobre-content h2 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    body.light-theme .sobre-content h2 {
+      color: #ff00ff;
+    }
+
+    .sobre-content p {
+      font-size: 1.2rem;
+      color: #ccc;
+      line-height: 1.8;
+    }
+
+    body.light-theme .sobre-content p {
+      color: #555;
+    }
+
+    .jovens {
+      width: 400px;
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 255, 255, 0.2);
+      border: 2px solid #00ffff;
+    }
+
+    body.light-theme .jovens {
+      border: 2px solid #ff00ff;
+    }
+
+    /* SERVIÇOS */
+    .servicos {
+      background: #0e0e0e;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    body.light-theme .servicos {
+      background: #f0f0f0;
+    }
+
+    .servicos-content h2 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 40px;
+    }
+
+    body.light-theme .servicos-content h2 {
+      color: #ff00ff;
+    }
+
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .servico-card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 255, 255, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    body.light-theme .servico-card {
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .servico-card:hover {
+      transform: translateY(-10px) rotateY(10deg);
+      box-shadow: 0 12px 25px rgba(0, 255, 255, 0.3);
+    }
+
+    body.light-theme .servico-card:hover {
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .servico-card img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 15px;
+      filter: brightness(0) invert(1);
+    }
+
+    body.light-theme .servico-card img {
+      filter: none;
+    }
+
+    .servico-card h3 {
+      font-size: 1.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 10px;
+    }
+
+    body.light-theme .servico-card h3 {
+      color: #ff00ff;
+    }
+
+    .servico-card p {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    body.light-theme .servico-card p {
+      color: #555;
+    }
+
+    .servico-card .btn {
+      font-size: 0.95rem;
+      padding: 10px 20px;
+    }
+
+    /* ESCOLHER */
+    .escolher {
+      background: #0a0a0a;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    body.light-theme .escolher {
+      background: #ffffff;
+    }
+
+    .escolher-content h2 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    body.light-theme .escolher-content h2 {
+      color: #ff00ff;
+    }
+
+    .escolher-content p {
+      font-size: 1.2rem;
+      color: #ccc;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      line-height: 1.8;
+    }
+
+    body.light-theme .escolher-content p {
+      color: #555;
+    }
+
+    /* EQUIPE */
+    .equipe {
+      padding: 80px 20px;
+      background: linear-gradient(45deg, #0e0e0e, #1a1a1a);
+      background-size: 200% 200%;
+      animation: backgroundShift 10s ease-in-out infinite;
+      text-align: center;
+    }
+
+    body.light-theme .equipe {
+      background: linear-gradient(45deg, #ffffff, #f0f0f0);
+    }
+
+    @keyframes backgroundShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .equipe h2 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 40px;
+    }
+
+    body.light-theme .equipe h2 {
+      color: #ff00ff;
+    }
+
+    .equipe-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 255, 255, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    body.light-theme .card {
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px) rotateY(10deg);
+      box-shadow: 0 12px 25px rgba(0, 255, 255, 0.3);
+    }
+
+    body.light-theme .card:hover {
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      object-fit: cover;
+      border: 3px solid #00ffff;
+    }
+
+    body.light-theme .card img {
+      border: 3px solid #ff00ff;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 5px;
+    }
+
+    body.light-theme .card h3 {
+      color: #ff00ff;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 10px;
+    }
+
+    body.light-theme .card p {
+      color: #555;
+    }
+
+    .card::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ff00ff;
+      color: #ffffff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 10;
+    }
+
+    .card:hover::after {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .card .btn {
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+
+    /* AVALIAÇÕES */
+    .avaliacoes {
+      padding: 80px 20px;
+      background: #0a0a0a;
+      text-align: center;
+    }
+
+    body.light-theme .avaliacoes {
+      background: #f0f0f0;
+    }
+
+    .avaliacoes h2 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 40px;
+    }
+
+    body.light-theme .avaliacoes h2 {
+      color: #ff00ff;
+    }
+
+    .swiper-container {
+      max-width: 1200px;
+      padding: 20px;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+      color: #ff00ff;
+    }
+
+    body.light-theme .swiper-button-prev, body.light-theme .swiper-button-next {
+      color: #ff00ff;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: #ff00ff;
+    }
+
+    .avaliacao-card {
+      background: #1a1a1a;
+      border-radius: 20px;
+      padding: 30px;
+      width: 320px;
+      box-shadow: 0 8px 20px rgba(0, 255, 255, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    body.light-theme .avaliacao-card {
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .avaliacao-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0, 255, 255, 0.3);
+    }
+
+    body.light-theme .avaliacao-card:hover {
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .avaliacao-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid #00ffff;
+    }
+
+    body.light-theme .avaliacao-card img {
+      border: 3px solid #ff00ff;
+    }
+
+    .avaliacao-card h3 {
+      font-size: 1.2rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 10px;
+    }
+
+    body.light-theme .avaliacao-card h3 {
+      color: #ff00ff;
+    }
+
+    .avaliacao-card p {
+      font-size: 0.95rem;
+      color: #ccc;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    body.light-theme .avaliacao-card p {
+      color: #555;
+    }
+
+    .estrelas {
+      font-size: 1.3rem;
+      color: #f5c518;
+    }
+
+    /* CONTATO */
+    .contato {
+      padding: 80px 20px;
+      background: #0e0e0e;
+      text-align: center;
+    }
+
+    body.light-theme .contato {
+      background: #ffffff;
+    }
+
+    .contato h2 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    body.light-theme .contato h2 {
+      color: #ff00ff;
+    }
+
+    .contato-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      justify-content: center;
+    }
+
+    .contato-form {
+      flex: 1;
+      min-width: 300px;
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    body.light-theme .contato-form {
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .contato-form:hover {
+      transform: translateY(-10px);
+    }
+
+    .contato-form h3 {
+      font-size: 1.8rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    body.light-theme .contato-form h3 {
+      color: #ff00ff;
+    }
+
+    .contato-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contato-form input,
+    .contato-form select,
+    .contato-form textarea {
+      padding: 12px;
+      border: 2px solid #00ffff;
+      border-radius: 8px;
+      background: #0d1117;
+      color: #d1d5db;
+      font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
+      transition: border-color 0.3s ease;
+    }
+
+    body.light-theme .contato-form input,
+    body.light-theme .contato-form select,
+    body.light-theme .contato-form textarea {
+      border: 2px solid #ff00ff;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    .contato-form input:focus,
+    .contato-form select:focus,
+    .contato-form textarea:focus {
+      border-color: #ff00ff;
+    }
+
+    .contato-form textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .contato-form button {
+      padding: 12px;
+      background-color: #ff00ff;
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .contato-form button:hover {
+      background-color: #ff33ff;
+    }
+
+    .contato-form .error {
+      color: #ff4d4d;
+      font-size: 0.9rem;
+      margin-top: -10px;
+      display: none;
+    }
+
+    .contato-form .success-message {
+      color: #00ffff;
+      font-size: 1rem;
+      margin-top: 10px;
+      display: none;
+    }
+
+    body.light-theme .contato-form .success-message {
+      color: #ff00ff;
+    }
+
+    /* INFORMAÇÕES DE CONTATO */
+    .contato-info {
+      flex: 1;
+      min-width: 300px;
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    body.light-theme .contato-info {
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .contato-info:hover {
+      transform: translateY(-10px);
+    }
+
+    .contato-info h3 {
+      font-size: 1.8rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    body.light-theme .contato-info h3 {
+      color: #ff00ff;
+    }
+
+    .contato-info p {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    body.light-theme .contato-info p {
+      color: #555;
+    }
+
+    .contato-info img {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1);
+    }
+
+    body.light-theme .contato-info img {
+      filter: none;
+    }
+
+    /* MAPA */
+    #map {
+      height: 300px;
+      border-radius: 12px;
+      margin-top: 20px;
+      border: 2px solid #00ffff;
+    }
+
+    body.light-theme #map {
+      border: 2px solid #ff00ff;
+    }
+
+    /* NEWSLETTER */
+    .newsletter {
+      padding: 80px 20px;
+      background: #0e0e0e;
+      text-align: center;
+    }
+
+    body.light-theme .newsletter {
+      background: #ffffff;
+    }
+
+    .newsletter h2 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    body.light-theme .newsletter h2 {
+      color: #ff00ff;
+    }
+
+    .newsletter p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    body.light-theme .newsletter p {
+      color: #555;
+    }
+
+    .form-newsletter {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-newsletter input[type="email"] {
+      padding: 12px;
+      border: 2px solid #00ffff;
+      border-radius: 8px;
+      background: #0d1117;
+      color: #d1d5db;
+      font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
+      width: 70%;
+      transition: border-color 0.3s ease;
+    }
+
+    body.light-theme .form-newsletter input[type="email"] {
+      border: 2px solid #ff00ff;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    .form-newsletter input:focus {
+      border-color: #ff00ff;
+    }
+
+    .form-newsletter button {
+      padding: 12px 25px;
+      background-color: #ff00ff;
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-newsletter button:hover {
+      background-color: #ff33ff;
+    }
+
+    .form-newsletter .error {
+      color: #ff4d4d;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      display: none;
+      width: 100%;
+      text-align: center;
+    }
+
+    .form-newsletter .success-message {
+      color: #00ffff;
+      font-size: 1rem;
+      margin-top: 10px;
+      display: none;
+      width: 100%;
+      text-align: center;
+    }
+
+    body.light-theme .form-newsletter .success-message {
+      color: #ff00ff;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 80px 20px;
+      background: #0e0e0e;
+      text-align: center;
+    }
+
+    body.light-theme .cta {
+      background: #ffffff;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    body.light-theme .cta h2 {
+      color: #ff00ff;
+    }
+
+    .cta p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    body.light-theme .cta p {
+      color: #555;
+    }
+
+    /* FOOTER */
+    .footer {
+      background-color: #0d1117;
+      color: #ccc;
+      padding: 40px 20px 20px;
+    }
+
+    body.light-theme .footer {
+      background-color: #f5f5f5;
+      color: #555;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-section h3 {
+      color: #00ffff;
+      margin-bottom: 15px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    body.light-theme .footer-section h3 {
+      color: #ff00ff;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul li a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    body.light-theme .footer-section ul li a {
+      color: #555;
+    }
+
+    .footer-section ul li a:hover {
+      color: #00bfff;
+    }
+
+    body.light-theme .footer-section ul li a:hover {
+      color: #ff00ff;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    body.light-theme .footer-section p,
+    body.light-theme .footer-section a {
+      color: #555;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .social-links img {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+      filter: brightness(0) invert(1);
+    }
+
+    body.light-theme .social-links img {
+      filter: none;
+    }
+
+    .social-links a:hover img {
+      transform: scale(1.1);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #333;
+      font-size: 13px;
+      color: #888;
+    }
+
+    body.light-theme .footer-bottom {
+      border-top: 1px solid #ccc;
+      color: #666;
+    }
+
+    .theme-toggle {
+      background: #ff00ff;
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background: #ff33ff;
+    }
+
+    /* ANIMAÇÕES */
+    .hidden {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease-in-out;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        background: #111;
+        width: 100%;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      body.light-theme .nav-links {
+        background: #fff;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .logo {
+        height: 60px;
+      }
+
+      .banner h1 {
+        font-size: 2.5rem;
+      }
+
+      .banner p {
+        font-size: 1.2rem;
+      }
+
+      .sobre {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .sobre-content {
+        text-align: center;
+      }
+
+      .sobre-content h2 {
+        font-size: 2rem;
+      }
+
+      .sobre-content p {
+        font-size: 1rem;
+      }
+
+      .jovens {
+        width: 100%;
+      }
+
+      .servicos-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .equipe-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .avaliacao-card {
+        width: 100%;
+      }
+
+      .contato-form,
+      .contato-info {
+        min-width: 100%;
+      }
+
+      #map {
+        height: 200px;
+      }
+
+      .floating-btn {
+        bottom: 15px;
+        right: 15px;
+      }
+
+      .btn {
+        font-size: 1rem;
+        padding: 10px 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Modais Específicos -->
+  <div id="modal-ariclene" class="modal">
+    <div class="modal-content">
+      <img src="Lemos.jpeg" alt="Ariclene Pedro" loading="lazy">
+      <h2>Ariclene Pedro</h2>
+      <p>Fundador e CEO da World Tec, Ariclene é um visionário apaixonado por tecnologia e transformação digital, liderando a empresa para impactar positivamente Angola.</p>
+      <button onclick="closeModal('modal-ariclene')" aria-label="Fechar modal de Ariclene Pedro">Fechar</button>
+    </div>
+  </div>
+  <div id="modal-adolfo" class="modal">
+    <div class="modal-content">
+      <img src="Suzana.jpeg" alt="Adolfo Figueiredo" loading="lazy">
+      <h2>Adolfo Figueiredo</h2>
+      <p>Desenvolvedor Back-end com expertise em sistemas escaláveis e APIs robustas, garantindo o desempenho das soluções da World Tec.</p>
+      <button onclick="closeModal('modal-adolfo')" aria-label="Fechar modal de Adolfo Figueiredo">Fechar</button>
+    </div>
+  </div>
+  <div id="modal-ramiro" class="modal">
+    <div class="modal-content">
+      <img src="Ramiro.jpeg" alt="Ramiro Francisco" loading="lazy">
+      <h2>Ramiro Francisco</h2>
+      <p>Designer UI/UX que cria interfaces intuitivas e visualmente impactantes, focado em melhorar a experiência do usuário.</p>
+      <button onclick="closeModal('modal-ramiro')" aria-label="Fechar modal de Ramiro Francisco">Fechar</button>
+    </div>
+  </div>
+  <div id="modal-domingos" class="modal">
+    <div class="modal-content">
+      <img src="https://source.unsplash.com/random/200x200?person" alt="Domingos Calandula" loading="lazy">
+      <h2>Domingos Calandula</h2>
+      <p>Desenvolvedor Front-end especializado em criar interfaces dinâmicas e responsivas com as mais recentes tecnologias web.</p>
+      <button onclick="closeModal('modal-domingos')" aria-label="Fechar modal de Domingos Calandula">Fechar</button>
+    </div>
+  </div>
+  <div id="modal-placeholder" class="modal">
+    <div class="modal-content">
+      <h2>Em Breve</h2>
+      <p>Esta seção está em desenvolvimento. Entre em contato para mais informações!</p>
+      <button onclick="closeModal('modal-placeholder')" aria-label="Fechar modal">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="logo-container">
+      <img src="5d4df6e2-2700-4d77-b04d-c8f080b88958.png" alt="World Tec Logo" class="logo" loading="lazy">
+    </div>
+    <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="solucoes.html">Soluções</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="equipe.html">Equipe</a></li>
+      <li><a href="contacto.html">Contato</a></li>
+    </ul>
+  </nav>
+
+  <!-- Banner -->
+  <section class="banner" role="banner">
+    <div id="particles-js"></div>
+    <div class="banner-content hidden">
+      <h1><span id="typed"></span></h1>
+      <p>Criando conexões, movimentando vidas</p>
+      <a href="#contato" class="btn" role="button" aria-label="Entre em contato">Entre em Contato</a>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section class="sobre hidden" id="sobre">
+    <div class="sobre-content" data-aos="fade-up">
+      <h2>Sobre Nós</h2>
+      <p>A <strong>World Tec</strong> é uma empresa angolana de base tecnológica, focada em conectar pessoas, negócios e instituições através de soluções digitais inteligentes.</p>
+      <p>Com uma equipe apaixonada e expertise local, criamos tecnologias que transformam realidades e impulsionam o desenvolvimento em Angola.</p>
+      <a href="sobre.html" class="btn" role="button" aria-label="Saiba mais sobre a World Tec">Ver mais</a>
+    </div>
+    <img src="jovens.jpeg" class="jovens hidden" alt="Equipe jovem da World Tec trabalhando em soluções tecnológicas" loading="lazy" data-aos="fade-up" data-aos-delay="100">
+  </section>
+
+  <!-- Serviços -->
+  <section class="servicos hidden" id="servicos">
+    <div class="servicos-content">
+      <h2 data-aos="fade-up">Nossos Serviços</h2>
+      <div class="servicos-grid">
+        <div class="servico-card hidden" role="region" aria-label="Sistemas Inteligentes" data-aos="zoom-in">
+          <img src="https://cdn-icons-png.flaticon.com/512/1087/1087840.png" alt="Ícone de Sistemas Inteligentes" loading="lazy">
+          <h3>Sistemas Inteligentes</h3>
+          <p>Desenvolvemos soluções de IA que otimizam processos e tomam decisões baseadas em dados.</p>
+          <a href="solucoes.html" class="btn" role="button" aria-label="Saiba mais sobre Sistemas Inteligentes">Saiba Mais</a>
+        </div>
+        <div class="servico-card hidden" role="region" aria-label="Automação" data-aos="zoom-in" data-aos-delay="100">
+          <img src="https://cdn-icons-png.flaticon.com/512/1087/1087816.png" alt="Ícone de Automação" loading="lazy">
+          <h3>Automação</h3>
+          <p>Automatizamos tarefas repetitivas para aumentar a eficiência e reduzir custos operacionais.</p>
+          <a href="solucoes.html" class="btn" role="button" aria-label="Saiba mais sobre Automação">Saiba Mais</a>
+        </div>
+        <div class="servico-card hidden" role="region" aria-label="Integração Segura" data-aos="zoom-in" data-aos-delay="200">
+          <img src="https://cdn-icons-png.flaticon.com/512/1087/1087815.png" alt="Ícone de Integração Segura" loading="lazy">
+          <h3>Integração Segura</h3>
+          <p>Conectamos sistemas com segurança, garantindo proteção e confiabilidade dos dados.</p>
+          <a href="solucoes.html" class="btn" role="button" aria-label="Saiba mais sobre Integração Segura">Saiba Mais</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Por que Escolher -->
+  <section class="escolher hidden" id="escolher">
+    <div class="escolher-content" data-aos="fade-up">
+      <h2>🚀 Por que escolher a World Tec?</h2>
+      <p>Não somos apenas mais uma empresa de tecnologia. A <strong>World Tec</strong> nasceu com o propósito de digitalizar Angola com <strong>inovação</strong>, <strong>segurança</strong> e <strong>inteligência local</strong>. Criamos soluções pensadas por angolanos, para angolanos.</p>
+      <a href="sobre.html" class="btn" role="button" aria-label="Saiba mais sobre por que escolher a World Tec">Ver mais</a>
+    </div>
+  </section>
+
+  <!-- Equipe -->
+  <section class="equipe hidden" id="equipe">
+    <h2 data-aos="fade-up">Nosso Time</h2>
+    <div class="equipe-cards">
+      <div class="card" role="region" aria-label="Ariclene Pedro" data-tooltip="Fundador e CEO" data-aos="zoom-in">
+        <img src="Lemos.jpeg" alt="Ariclene Pedro, Fundador e CEO da World Tec" loading="lazy">
+        <h3>Ariclene Pedro</h3>
+        <p>Fundador & CEO</p>
+        <a href="#" onclick="openModal('modal-ariclene')" class="btn" role="button" aria-label="Saiba mais sobre Ariclene Pedro">Saiba Mais</a>
+      </div>
+      <div class="card" role="region" aria-label="Adolfo Figueiredo" data-tooltip="Desenvolvedor Back-end" data-aos="zoom-in" data-aos-delay="100">
+        <img src="Suzana.jpeg" alt="Adolfo Figueiredo, Desenvolvedor Back-end da World Tec" loading="lazy">
+        <h3>Adolfo Figueiredo</h3>
+        <p>Desenvolvedor Back-end</p>
+        <a href="#" onclick="openModal('modal-adolfo')" class="btn" role="button" aria-label="Saiba mais sobre Adolfo Figueiredo">Saiba Mais</a>
+      </div>
+      <div class="card" role="region" aria-label="Ramiro Francisco" data-tooltip="Designer UI/UX" data-aos="zoom-in" data-aos-delay="200">
+        <img src="Ramiro.jpeg" alt="Ramiro Francisco, Designer UI/UX da World Tec" loading="lazy">
+        <h3>Ramiro Francisco</h3>
+        <p>Designer UI/UX</p>
+        <a href="#" onclick="openModal('modal-ramiro')" class="btn" role="button" aria-label="Saiba mais sobre Ramiro Francisco">Saiba Mais</a>
+      </div>
+      <div class="card" role="region" aria-label="Domingos Calandula" data-tooltip="Desenvolvedor Front-end" data-aos="zoom-in" data-aos-delay="300">
+        <img src="https://source.unsplash.com/random/200x200?person" alt="Domingos Calandula, Desenvolvedor Front-end da World Tec" loading="lazy">
+        <h3>Domingos Calandula</h3>
+        <p>Desenvolvedor Front-end</p>
+        <a href="#" onclick="openModal('modal-domingos')" class="btn" role="button" aria-label="Saiba mais sobre Domingos Calandula">Saiba Mais</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Avaliações -->
+  <section class="avaliacoes hidden" id="avaliacoes">
+    <h2 data-aos="fade-up">O que dizem sobre a World Tec</h2>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="avaliacao-card" data-aos="zoom-in">
+            <img src="cliente1.jpg" alt="Maria João, cliente da World Tec" loading="lazy">
+            <h3>Maria João</h3>
+            <p>“A World Tec modernizou totalmente nosso sistema de gestão. Atendimento rápido e soluções sob medida!”</p>
+            <div class="estrelas">★★★★★</div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="avaliacao-card" data-aos="zoom-in" data-aos-delay="100">
+            <img src="cliente2.jpg" alt="José Miguel, cliente da World Tec" loading="lazy">
+            <h3>José Miguel</h3>
+            <p>“Tecnologia feita por angolanos para angolanos. Estou impressionado com a qualidade e o profissionalismo.”</p>
+            <div class="estrelas">★★★★☆</div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="avaliacao-card" data-aos="zoom-in" data-aos-delay="200">
+            <img src="cliente3.jpg" alt="Vanessa Cruz, cliente da World Tec" loading="lazy">
+            <h3>Vanessa Cruz</h3>
+            <p>“Serviço excelente! A integração com nosso sistema de saúde foi perfeita.”</p>
+            <div class="estrelas">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section class="contato hidden" id="contato">
+    <h2 data-aos="fade-up">Entre em Contato</h2>
+    <div class="contato-container">
+      <div class="contato-form" data-aos="zoom-in">
+        <h3>Envie Sua Mensagem</h3>
+        <form id="contato-form" role="form" aria-label="Formulário de contato">
+          <input type="text" id="nome" placeholder="Seu nome" required aria-label="Digite seu nome">
+          <div class="error" id="nome-error">Por favor, insira seu nome.</div>
+          <input type="email" id="email" placeholder="Seu email" required aria-label="Digite seu email">
+          <div class="error" id="email-error">Por favor, insira um email válido.</div>
+          <input type="text" id="empresa" placeholder="Nome da empresa (opcional)" aria-label="Digite o nome da empresa">
+          <textarea id="mensagem" placeholder="Sua mensagem" required aria-label="Digite sua mensagem"></textarea>
+          <div class="error" id="mensagem-error">Por favor, insira sua mensagem.</div>
+          <button type="submit" class="btn" aria-label="Enviar mensagem">Enviar</button>
+          <div class="success-message" id="success-message" role="alert" aria-live="polite">Mensagem enviada com sucesso!</div>
+        </form>
+      </div>
+      <div class="contato-info" data-aos="zoom-in" data-aos-delay="100">
+        <h3>Nossos Contatos</h3>
+        <p>
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/email.svg" alt="Email" loading="lazy">
+          <a href="mailto:contato@wtec.store">contato@wtec.store</a>
+        </p>
+        <p>
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/phone.svg" alt="Telefone" loading="lazy">
+          <a href="tel:+244959499380">+244 959 499 380</a>
+        </p>
+        <p>
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" loading="lazy">
+          <a href="https://wa.me/959499380" target="_blank">Fale no WhatsApp</a>
+        </p>
+        <p>
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/map.svg" alt="Endereço" loading="lazy">
+          Av. 21 de Janeiro, Luanda, Angola
+        </p>
+        <div id="map"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter hidden">
+    <h2 data-aos="fade-up">Receba Novidades</h2>
+    <p data-aos="fade-up" data-aos-delay="100">Inscreva-se para receber atualizações sobre nossos projetos e serviços.</p>
+    <form class="form-newsletter" id="newsletter-form" role="form" aria-label="Formulário de inscrição na newsletter">
+      <input type="email" id="newsletter-email" placeholder="Seu e-mail" required aria-label="Digite seu e-mail para a newsletter">
+      <div class="error" id="newsletter-email-error">Por favor, insira um e-mail válido.</div>
+      <button type="submit" class="btn" aria-label="Inscrever na newsletter">Inscrever</button>
+      <div class="success-message" id="newsletter-success-message" role="alert" aria-live="polite">Inscrito com sucesso!</div>
+    </form>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta hidden">
+    <h2 data-aos="fade-up">Pronto para Transformar?</h2>
+    <p data-aos="fade-up" data-aos-delay="100">Entre em contato agora ou conecte-se via WhatsApp para discutir suas ideias!</p>
+    <a href="https://wa.me/959499380" class="btn" target="_blank" role="button" aria-label="Fale no WhatsApp">Fale no WhatsApp</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Links Rápidos</h3>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="solucoes.html">Soluções</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="equipe.html">Equipe</a></li>
+          <li><a href="contacto.html">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contato</h3>
+        <p>Email: <a href="mailto:contato@wtec.store">contato@wtec.store</a></p>
+        <p>Telefone: <a href="tel:+244959499380">+244 959 499 380</a></p>
+        <p>WhatsApp: <a href="https://wa.me/959499380" target="_blank">Fale conosco</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Siga-nos</h3>
+        <div class="social-links">
+          <a href="https://facebook.com" target="_blank" title="Facebook">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" loading="lazy">
+          </a>
+          <a href="https://instagram.com" target="_blank" title="Instagram">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" loading="lazy">
+          </a>
+          <a href="https://linkedin.com" target="_blank" title="LinkedIn">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" loading="lazy">
+          </a>
+          <a href="https://x.com" target="_blank" title="Twitter/X">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X" loading="lazy">
+          </a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Tema</h3>
+        <button class="theme-toggle" aria-label="Alternar tema claro/escuro">Tema Claro</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 World Tec. Todos os direitos reservados. Ícones por <a href="https://simpleicons.org" target="_blank">Simple Icons</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Botão Flutuante -->
+  <div class="floating-btn">
+    <a href="https://wa.me/959499380" class="btn" target="_blank" role="button" aria-label="Fale no WhatsApp">WhatsApp</a>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Voltar ao topo">↑</button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+    // Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXX');
+
+    // Particles.js
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 60, density: { enable: true, value_area: 800 } },
+        color: { value: '#00ffff' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 120, color: '#00ffff', opacity: 0.4, width: 1.2 },
+        move: { enable: true, speed: 2, direction: 'none', random: true, straight: false }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } },
+        modes: { grab: { distance: 150, line_linked: { opacity: 0.7 } }, push: { particles_nb: 3 } }
+      },
+      retina_detect: true
+    });
+
+    // AOS Initialization
+    AOS.init({ duration: 1000, once: true });
+
+    // Typed.js Initialization
+    const typed = new Typed('#typed', {
+      strings: ['Construindo o Futuro', 'Inovação Angolana', 'Tecnologia para Todos'],
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 2000,
+      loop: true,
+      ariaLive: 'polite'
+    });
+
+    // Swiper Initialization - Avaliações
+    const swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+      }
+    });
+
+    // Leaflet Map
+    const map = L.map('map').setView([-8.8368, 13.2343], 13); // Luanda, Angola
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom: 18,
+    }).addTo(map);
+    L.marker([-8.8368, 13.2343]).addTo(map)
+      .bindPopup('World Tec - Luanda')
+      .openPopup();
+
+    // Modal Functions
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = 'flex';
+        modal.querySelector('.modal-content').focus();
+      }
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    // Form Validation
+    const contatoForm = document.getElementById('contato-form');
+    const newsletterForm = document.getElementById('newsletter-form');
+
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+
+    contatoForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      let isValid = true;
+
+      // Reset errors
+      document.querySelectorAll('.contato-form .error').forEach(error => error.style.display = 'none');
+      document.getElementById('success-message').style.display = 'none';
+
+      // Validate Name
+      const nome = document.getElementById('nome').value.trim();
+      if (!nome || nome.length < 2) {
+        document.getElementById('nome-error').style.display = 'block';
+        isValid = false;
+      }
+
+      // Validate Email
+      const email = document.getElementById('email').value.trim();
+      if (!email || !validateEmail(email)) {
+        document.getElementById('email-error').style.display = 'block';
+        isValid = false;
+      }
+
+      // Validate Message
+      const mensagem = document.getElementById('mensagem').value.trim();
+      if (!mensagem || mensagem.length < 10) {
+        document.getElementById('mensagem-error').style.display = 'block';
+        isValid = false;
+      }
+
+      if (isValid) {
+        document.getElementById('success-message').style.display = 'block';
+        this.reset();
+      }
+    });
+
+    newsletterForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById('newsletter-email').value.trim();
+      document.getElementById('newsletter-email-error').style.display = 'none';
+      document.getElementById('newsletter-success-message').style.display = 'none';
+
+      if (!validateEmail(email)) {
+        document.getElementById('newsletter-email-error').style.display = 'block';
+        return;
+      }
+
+      document.getElementById('newsletter-success-message').style.display = 'block';
+      this.reset();
+    });
+
+    // Mobile Menu Toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+
+      menuToggle.addEventListener('click', () => {
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+
+      navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
+
+      // Intersection Observer for Animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('show');
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      const hiddenElements = document.querySelectorAll('.hidden');
+      hiddenElements.forEach((el) => observer.observe(el));
+
+      // Back to Top Button
+      const backToTop = document.querySelector('.back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTop.classList.add('show');
+        } else {
+          backToTop.classList.remove('show');
+        }
+      });
+
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Theme Toggle
+      const themeToggle = document.querySelector('.theme-toggle');
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-theme');
+        themeToggle.textContent = document.body.classList.contains('light-theme') ? 'Tema Escuro' : 'Tema Claro';
+      });
+    });
+
+    // Debounce function to optimize scroll performance
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+  </script>
+</body>
+</html>

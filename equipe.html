@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conheça a equipe da World Tec, composta por profissionais apaixonados por tecnologia e inovação em Angola.">
+  <meta name="keywords" content="World Tec, Angola, equipe, tecnologia, inovação, profissionais">
+  <meta property="og:title" content="Equipe - World Tec">
+  <meta property="og:description" content="Descubra os profissionais que impulsionam a transformação digital na World Tec em Angola.">
+  <meta property="og:image" content="/favicon_io/og-image.jpg">
+  <link rel="icon" href="/favicon_io/favicon.ico" />
+  <title>Equipe - World Tec</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXX"></script>
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #0d1117;
+      color: #d1d5db;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body.light-theme {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    a:focus, button:focus, input:focus, textarea:focus {
+      outline: 2px solid #ff00ff;
+      outline-offset: 2px;
+    }
+
+    /* BANNER */
+    .banner {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+      background: #0d1117;
+      overflow: hidden;
+    }
+
+    body.light-theme .banner {
+      background: #e0e0e0;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      animation: fadeInUp 2s ease-out forwards;
+    }
+
+    body.light-theme .banner-content {
+      color: #333;
+    }
+
+    .banner h1 {
+      font-size: 4rem;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(45deg, #00ffff, #00b7b7, #00ffaa);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+      animation: gradientShift 5s ease-in-out infinite;
+    }
+
+    body.light-theme .banner h1 {
+      background: linear-gradient(45deg, #ff00ff, #00b7b7, #00ffaa);
+    }
+
+    .banner p {
+      font-size: 1.8rem;
+      color: #ccc;
+      margin-bottom: 1rem;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body.light-theme .banner p {
+      color: #555;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 0, 255, 0.5); }
+      50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 0, 255, 0.8); }
+      100% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 0, 255, 0.5); }
+    }
+
+    /* BOTÃO FLUTUANTE */
+    .floating-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 40px;
+      background-color: aqua;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      border-radius: 12px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      animation: pulse 2s infinite;
+      position: relative;
+    }
+
+    .btn:hover {
+      background-color: #ff33ff;
+      transform: scale(1.05);
+    }
+
+    /* BACK TO TOP */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #ff00ff;
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      padding: 10px 15px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: none;
+      z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+
+    .back-to-top:hover {
+      background-color: #ff33ff;
+      transform: scale(1.05);
+    }
+
+    .back-to-top.show {
+      display: block;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(0, 0, 0, 0.85);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 255, 255, 0.15);
+    }
+
+    body.light-theme .navbar {
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    .logo {
+      height: 80px;
+      filter: brightness(1.2);
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+      transition: filter 0.3s ease;
+    }
+
+    body.light-theme .logo {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo:hover {
+      filter: brightness(1.4);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #00ffff;
+      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+      transition: color 0.3s ease;
+    }
+
+    body.light-theme .nav-links li a {
+      color: #ff00ff;
+    }
+
+    .nav-links li a:hover {
+      color: #fff;
+    }
+
+    body.light-theme .nav-links li a:hover {
+      color: #333;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      background: aqua;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+      transform: scale(1.1);
+      animation: neonGlow 1.5s infinite;
+    }
+
+    .menu-toggle span {
+      width: 30px;
+      height: 4px;
+      background-color: black;
+      margin: 3px 0;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(8px, -8px);
+    }
+
+    /* INTRODUÇÃO */
+    .intro-section {
+      padding: 80px 20px;
+      background: #0a0a0a;
+      text-align: center;
+    }
+
+    body.light-theme .intro-section {
+      background: #ffffff;
+    }
+
+    .intro-section h2 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    body.light-theme .intro-section h2 {
+      color: #ff00ff;
+    }
+
+    .intro-section p {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      font-size: 1.2rem;
+      color: #ccc;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    body.light-theme .intro-section p {
+      color: #555;
+    }
+
+    .intro-section.show p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* EQUIPE */
+    .equipe {
+      padding: 60px 20px;
+      background: linear-gradient(45deg, #0e0e0e, #1a1a1a);
+      background-size: 200% 200%;
+      animation: backgroundShift 10s ease-in-out infinite;
+      text-align: center;
+    }
+
+    body.light-theme .equipe {
+      background: linear-gradient(45deg, #ffffff, #f0f0f0);
+    }
+
+    @keyframes backgroundShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .equipe h2 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 40px;
+    }
+
+    body.light-theme .equipe h2 {
+      color: #ff00ff;
+    }
+
+    .equipe-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 255, 255, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    body.light-theme .card {
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px) rotateY(10deg);
+      box-shadow: 0 12px 25px rgba(0, 255, 255, 0.3);
+    }
+
+    body.light-theme .card:hover {
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      object-fit: cover;
+      border: 3px solid #00ffff;
+    }
+
+    body.light-theme .card img {
+      border: 3px solid #ff00ff;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 5px;
+    }
+
+    body.light-theme .card h3 {
+      color: #ff00ff;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 10px;
+    }
+
+    body.light-theme .card p {
+      color: #555;
+    }
+
+    .card::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ff00ff;
+      color: #ffffff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 10;
+    }
+
+    .card:hover::after {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .card .btn {
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+
+    /* CULTURA */
+    .cultura-section {
+      padding: 60px 20px;
+      background: #0d1117;
+      text-align: center;
+    }
+
+    body.light-theme .cultura-section {
+      background: #f5f5f5;
+    }
+
+    .cultura-section h2 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 40px;
+    }
+
+    body.light-theme .cultura-section h2 {
+      color: #ff00ff;
+    }
+
+    .cultura-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cultura-card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 255, 255, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    body.light-theme .cultura-card {
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .cultura-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0, 255, 255, 0.3);
+    }
+
+    body.light-theme .cultura-card:hover {
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .cultura-card h3 {
+      font-size: 1.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 10px;
+    }
+
+    body.light-theme .cultura-card h3 {
+      color: #ff00ff;
+    }
+
+    .cultura-card p {
+      font-size: 1rem;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    body.light-theme .cultura-card p {
+      color: #555;
+    }
+
+    /* DEPOIMENTOS */
+    .depoimentos {
+      padding: 60px 20px;
+      background: #0e0e0e;
+      text-align: center;
+    }
+
+    body.light-theme .depoimentos {
+      background: #f0f0f0;
+    }
+
+    .depoimentos h2 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 40px;
+    }
+
+    body.light-theme .depoimentos h2 {
+      color: #ff00ff;
+    }
+
+    .depoimento-slide {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    body.light-theme .depoimento-slide {
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .depoimento-slide p {
+      font-size: 1rem;
+      color: #ccc;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    body.light-theme .depoimento-slide p {
+      color: #555;
+    }
+
+    .depoimento-slide h3 {
+      font-size: 1.2rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    body.light-theme .depoimento-slide h3 {
+      color: #ff00ff;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #ff00ff;
+      filter: brightness(1.2);
+    }
+
+    body.light-theme .swiper-button-next,
+    body.light-theme .swiper-button-prev {
+      color: #ff00ff;
+    }
+
+    /* MODAIS */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    body.light-theme .modal {
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .modal-content {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      animation: slideIn 0.3s ease;
+      border: 2px solid #ff00ff;
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+    }
+
+    body.light-theme .modal-content {
+      background: #ffffff;
+      border: 2px solid #ff00ff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffff;
+      margin-bottom: 20px;
+    }
+
+    body.light-theme .modal-content h2 {
+      color: #ff00ff;
+    }
+
+    .modal-content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    body.light-theme .modal-content p {
+      color: #555;
+    }
+
+    .modal-content img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 3px solid #00ffff;
+    }
+
+    body.light-theme .modal-content img {
+      border: 3px solid #ff00ff;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      background-color: #ff00ff;
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .modal-content button:hover {
+      background-color: #ff33ff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* CTA */
+    .cta {
+      padding: 60px 20px;
+      background: #0e0e0e;
+      text-align: center;
+    }
+
+    body.light-theme .cta {
+      background: #ffffff;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    body.light-theme .cta h2 {
+      color: #ff00ff;
+    }
+
+    .cta p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    body.light-theme .cta p {
+      color: #555;
+    }
+
+    /* FOOTER */
+    .footer {
+      background-color: #0d1117;
+      color: #ccc;
+      padding: 40px 20px 20px;
+    }
+
+    body.light-theme .footer {
+      background-color: #f5f5f5;
+      color: #555;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-section h3 {
+      color: #00ffff;
+      margin-bottom: 15px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    body.light-theme .footer-section h3 {
+      color: #ff00ff;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul li a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    body.light-theme .footer-section ul li a {
+      color: #555;
+    }
+
+    .footer-section ul li a:hover {
+      color: #00bfff;
+    }
+
+    body.light-theme .footer-section ul li a:hover {
+      color: #ff00ff;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    body.light-theme .footer-section p,
+    body.light-theme .footer-section a {
+      color: #555;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .social-links img {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+      filter: brightness(0) invert(1);
+    }
+
+    body.light-theme .social-links img {
+      filter: none;
+    }
+
+    .social-links a:hover img {
+      transform: scale(1.1);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #333;
+      font-size: 13px;
+      color: #888;
+    }
+
+    body.light-theme .footer-bottom {
+      border-top: 1px solid #ccc;
+      color: #666;
+    }
+
+    .theme-toggle {
+      background: #ff00ff;
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background: #ff33ff;
+    }
+
+    /* ANIMAÇÕES */
+    .hidden {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease-in-out;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        background: #111;
+        width: 100%;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      body.light-theme .nav-links {
+        background: #fff;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .logo {
+        height: 60px;
+      }
+
+      .banner h1 {
+        font-size: 2.5rem;
+      }
+
+      .banner p {
+        font-size: 1.2rem;
+      }
+
+      .floating-btn {
+        bottom: 15px;
+        right: 15px;
+      }
+
+      .btn {
+        font-size: 1rem;
+        padding: 10px 30px;
+      }
+
+      .modal-content {
+        width: 95%;
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+
+      .intro-section p {
+        font-size: 1rem;
+      }
+
+      .card img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .equipe-cards {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Modais Específicos -->
+  <div id="modal-ariclene" class="modal">
+    <div class="modal-content">
+      <img src="Lemos.jpeg" alt="Ariclene Pedro" loading="lazy">
+      <h2>Ariclene Pedro</h2>
+      <p>Fundador e CEO da World Tec, Ariclene é um visionário apaixonado por tecnologia e transformação digital, liderando a empresa para impactar positivamente Angola.</p>
+      <button onclick="closeModal('modal-ariclene')" aria-label="Fechar modal de Ariclene Pedro">Fechar</button>
+    </div>
+  </div>
+  <div id="modal-adolfo" class="modal">
+    <div class="modal-content">
+      <img src="Suzana.jpeg" alt="Adolfo Figueiredo" loading="lazy">
+      <h2>Adolfo Figueiredo</h2>
+      <p>Desenvolvedor Back-end com expertise em sistemas escaláveis e APIs robustas, garantindo o desempenho das soluções da World Tec.</p>
+      <button onclick="closeModal('modal-adolfo')" aria-label="Fechar modal de Adolfo Figueiredo">Fechar</button>
+    </div>
+  </div>
+  <div id="modal-ramiro" class="modal">
+    <div class="modal-content">
+      <img src="Ramiro.jpeg" alt="Ramiro Francisco" loading="lazy">
+      <h2>Ramiro Francisco</h2>
+      <p>Designer UI/UX que cria interfaces intuitivas e visualmente impactantes, focado em melhorar a experiência do usuário.</p>
+      <button onclick="closeModal('modal-ramiro')" aria-label="Fechar modal de Ramiro Francisco">Fechar</button>
+    </div>
+  </div>
+  <div id="modal-domingos" class="modal">
+    <div class="modal-content">
+      <img src="https://source.unsplash.com/random/200x200?person" alt="Domingos Calandula" loading="lazy">
+      <h2>Domingos Calandula</h2>
+      <p>Desenvolvedor Front-end especializado em criar interfaces dinâmicas e responsivas com as mais recentes tecnologias web.</p>
+      <button onclick="closeModal('modal-domingos')" aria-label="Fechar modal de Domingos Calandula">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="logo-container">
+      <img src="logo.png" alt="World Tec Logo" class="logo" loading="lazy">
+    </div>
+    <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="solucoes.html">Soluções</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="equipe.html" aria-current="page">Equipe</a></li>
+      <li><a href="index.html#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+  <!-- Banner -->
+  <section class="banner" role="banner">
+    <div id="particles-js"></div>
+    <div class="banner-content hidden">
+      <h1><span id="typed"></span></h1>
+      <p>Conheça os profissionais que impulsionam a inovação na World Tec</p>
+    </div>
+  </section>
+
+  <!-- Introdução -->
+  <section class="intro-section hidden">
+    <h2 data-aos="fade-up">Nossa Equipe</h2>
+    <p data-aos="fade-up" data-aos-delay="100">Na World Tec, nossa equipe é composta por profissionais apaixonados por tecnologia, inovação e impacto social em Angola.</p>
+    <p data-aos="fade-up" data-aos-delay="200">Com diversidade de habilidades e experiências, estamos comprometidos em transformar negócios e comunidades através de soluções tecnológicas de ponta.</p>
+  </section>
+
+  <!-- Equipe -->
+  <section class="equipe hidden" id="equipe">
+    <h2 data-aos="fade-up">Nosso Time</h2>
+    <div class="equipe-cards">
+      <div class="card" role="region" aria-label="Ariclene Pedro" data-tooltip="Fundador e CEO" data-aos="zoom-in">
+        <img src="Lemos.jpeg" alt="Ariclene Pedro, Fundador e CEO da World Tec" loading="lazy">
+        <h3>Ariclene Pedro</h3>
+        <p>Fundador & CEO</p>
+        <a href="#" onclick="openModal('modal-ariclene')" class="btn" role="button" aria-label="Saiba mais sobre Ariclene Pedro">Saiba Mais</a>
+      </div>
+      <div class="card" role="region" aria-label="Adolfo Figueiredo" data-tooltip="Desenvolvedor Back-end" data-aos="zoom-in" data-aos-delay="100">
+        <img src="Suzana.jpeg" alt="Adolfo Figueiredo, Desenvolvedor Back-end da World Tec" loading="lazy">
+        <h3>Adolfo Figueiredo</h3>
+        <p>Desenvolvedor Back-end</p>
+        <a href="#" onclick="openModal('modal-adolfo')" class="btn" role="button" aria-label="Saiba mais sobre Adolfo Figueiredo">Saiba Mais</a>
+      </div>
+      <div class="card" role="region" aria-label="Ramiro Francisco" data-tooltip="Designer UI/UX" data-aos="zoom-in" data-aos-delay="200">
+        <img src="Ramiro.jpeg" alt="Ramiro Francisco, Designer UI/UX da World Tec" loading="lazy">
+        <h3>Ramiro Francisco</h3>
+        <p>Designer UI/UX</p>
+        <a href="#" onclick="openModal('modal-ramiro')" class="btn" role="button" aria-label="Saiba mais sobre Ramiro Francisco">Saiba Mais</a>
+      </div>
+      <div class="card" role="region" aria-label="Domingos Calandula" data-tooltip="Desenvolvedor Front-end" data-aos="zoom-in" data-aos-delay="300">
+        <img src="semft.jpeg" alt="Domingos Calandula, Desenvolvedor Front-end da World Tec" loading="lazy">
+        <h3>Domingos Calandula</h3>
+        <p>Desenvolvedor Front-end</p>
+        <a href="#" onclick="openModal('modal-domingos')" class="btn" role="button" aria-label="Saiba mais sobre Domingos Calandula">Saiba Mais</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cultura -->
+  <section class="cultura-section hidden">
+    <h2 data-aos="fade-up">Nossa Cultura</h2>
+    <div class="cultura-grid">
+      <div class="cultura-card" data-aos="zoom-in">
+        <h3>Inovação</h3>
+        <p>Buscamos constantemente novas formas de resolver problemas e criar impacto através da tecnologia.</p>
+      </div>
+      <div class="cultura-card" data-aos="zoom-in" data-aos-delay="100">
+        <h3>Colaboração</h3>
+        <p>Trabalhamos em equipe, unindo talentos diversos para alcançar resultados extraordinários.</p>
+      </div>
+      <div class="cultura-card" data-aos="zoom-in" data-aos-delay="200">
+        <h3>Impacto</h3>
+        <p>Nosso objetivo é transformar comunidades e negócios em Angola com soluções acessíveis e inovadoras.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Depoimentos -->
+  <section class="depoimentos hidden">
+    <h2 data-aos="fade-up">O Que Nossa Equipe Diz</h2>
+    <div class="swiper-container depoimentos-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide depoimento-slide">
+          <p>"Trabalhar na World Tec é inspirador. Aqui, posso usar minha paixão por IA para criar impacto real."</p>
+          <h3>Ariclene Pedro, Fundador & CEO</h3>
+        </div>
+        <div class="swiper-slide depoimento-slide">
+          <p>"A colaboração na World Tec me permite aprender e crescer todos os dias."</p>
+          <h3>Adolfo Figueiredo, Desenvolvedor Back-end</h3>
+        </div>
+        <div class="swiper-slide depoimento-slide">
+          <p>"Criar interfaces que encantam os usuários é o que me motiva na World Tec."</p>
+          <h3>Ramiro Francisco, Designer UI/UX</h3>
+        </div>
+        <div class="swiper-slide depoimento-slide">
+          <p>"Desenvolver front-ends dinâmicos para a World Tec é uma experiência incrível."</p>
+          <h3>Domingos Calandula, Desenvolvedor Front-end</h3>
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta hidden">
+    <h2 data-aos="fade-up">Junte-se à Nossa Equipe</h2>
+    <p data-aos="fade-up" data-aos-delay="100">Quer fazer parte de uma equipe que transforma o futuro? Entre em contato ou confira nossas vagas!</p>
+    <a href="index.html#contato" class="btn" role="button" aria-label="Entre em contato">Entre em Contato</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Links Rápidos</h3>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="solucoes.html">Soluções</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="equipe.html">Equipe</a></li>
+          <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contato</h3>
+        <p>Email: <a href="mailto:contato@wtec.store">contato@wtec.store</a></p>
+        <p>Telefone: <a href="tel:+244959499380">+244 959 499 380</a></p>
+        <p>WhatsApp: <a href="https://wa.me/959499380" target="_blank">Fale conosco</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Siga-nos</h3>
+        <div class="social-links">
+          <a href="https://facebook.com" target="_blank" title="Facebook">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" loading="lazy">
+          </a>
+          <a href="https://instagram.com" target="_blank" title="Instagram">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" loading="lazy">
+          </a>
+          <a href="https://linkedin.com" target="_blank" title="LinkedIn">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" loading="lazy">
+          </a>
+          <a href="https://x.com" target="_blank" title="Twitter/X">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X" loading="lazy">
+          </a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Tema</h3>
+        <button class="theme-toggle" aria-label="Alternar tema claro/escuro">Tema Claro</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 World Tec. Todos os direitos reservados. Ícones por <a href="https://simpleicons.org" target="_blank">Simple Icons</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Botão Flutuante -->
+  <div class="floating-btn">
+    <a href="index.html#contato" class="btn" role="button" aria-label="Entre em contato">Entre em Contato</a>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Voltar ao topo">↑</button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+    // Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXX');
+
+    // Particles.js
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 60, density: { enable: true, value_area: 800 } },
+        color: { value: '#00ffff' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 120, color: '#00ffff', opacity: 0.4, width: 1.2 },
+        move: { enable: true, speed: 2, direction: 'none', random: true, straight: false }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } },
+        modes: { grab: { distance: 150, line_linked: { opacity: 0.7 } }, push: { particles_nb: 3 } }
+      },
+      retina_detect: true
+    });
+
+    // AOS Initialization
+    AOS.init({ duration: 1000, once: true });
+
+    // Typed.js Initialization
+    const typed = new Typed('#typed', {
+      strings: ['Nossa Equipe', 'Líderes em Inovação', 'Transformando o Futuro'],
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 2000,
+      loop: true,
+      ariaLive: 'polite'
+    });
+
+    // Swiper Initialization - Depoimentos
+    const depoimentosSwiper = new Swiper('.depoimentos-container', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 30,
+        }
+      }
+    });
+
+    // Mobile Menu Toggle
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      menuToggle.addEventListener("click", () => {
+        const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", !isExpanded);
+        menuToggle.classList.toggle("active");
+        navLinks.classList.toggle("active");
+      });
+
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.classList.remove("active");
+          navLinks.classList.remove("active");
+        });
+      });
+
+      // Intersection Observer for Animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      const hiddenElements = document.querySelectorAll(".hidden");
+      hiddenElements.forEach((el) => observer.observe(el));
+
+      // Back to Top Button
+      const backToTop = document.querySelector(".back-to-top");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      // Theme Toggle
+      const themeToggle = document.querySelector(".theme-toggle");
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("light-theme");
+        themeToggle.textContent = document.body.classList.contains("light-theme") ? "Tema Escuro" : "Tema Claro";
+      });
+    });
+
+    // Função para abrir/fechar modais
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = "flex";
+        modal.querySelector(".modal-content").focus();
+      }
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>

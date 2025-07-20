@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sobre a World Tec - Conheça nossa missão, visão, valores e história como empresa angolana de tecnologia">
+  <meta name="keywords" content="World Tec, Angola, tecnologia, inovação, sobre">
+  <meta property="og:title" content="Sobre a World Tec">
+  <meta property="og:description" content="Saiba mais sobre a World Tec, uma empresa angolana que conecta pessoas e negócios com soluções tecnológicas inovadoras.">
+  <meta property="og:image" content="/favicon_io/og-image.jpg">
+  <link rel="icon" href="/favicon_io/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <title>Sobre a World Tec</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #0d1117;
+      color: #d1d5db;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    a:focus, button:focus, input:focus, textarea:focus {
+      outline: 2px solid #ffff00;
+      outline-offset: 2px;
+    }
+
+    /* BANNER */
+    .banner {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+      background: #0d1117;
+      overflow: hidden;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      animation: fadeInUp 2s ease-out forwards;
+    }
+
+    .banner h1 {
+      font-size: 4rem;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(45deg, #00ffff, #00b7b7, #00ffaa);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+      animation: gradientShift 5s ease-in-out infinite;
+    }
+
+    .banner p {
+      font-size: 1.8rem;
+      color: #ccc;
+      margin-bottom: 1rem;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 0, 255, 0.5); }
+      50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 0, 255, 0.8); }
+      100% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 0, 255, 0.5); }
+    }
+
+    @keyframes neonGlow {
+      0% { box-shadow: 0 0 5px #ffff00, 0 0 10px #ffff00, 0 0 15px #ffff00; }
+      50% { box-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00, 0 0 30px #ffff00; }
+      100% { box-shadow: 0 0 5px #ffff00, 0 0 10px #ffff00, 0 0 15px #ffff00; }
+    }
+
+    /* BOTÃO FLUTUANTE */
+    .floating-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 40px;
+      background-color: aqua;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      border-radius: 12px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    .btn:hover {
+      background-color: aqua;
+      transform: scale(1.05);
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(0, 0, 0, 0.85);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 255, 255, 0.15);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    .logo {
+      height: 80px;
+      filter: brightness(1.2);
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+      transition: filter 0.3s ease;
+    }
+
+    .logo:hover {
+      filter: brightness(1.4);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #00ffff;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #fff;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      background: aqua;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+      transform: scale(1.1);
+      animation: neonGlow 1.5s infinite;
+    }
+
+    .menu-toggle span {
+      width: 30px;
+      height: 4px;
+      background-color: black;
+      margin: 3px 0;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(8px, -8px);
+    }
+
+    /* MISSÃO, VISÃO, VALORES */
+    .missao-visao-valores {
+      padding: 100px 20px;
+      background: #0e0e0e;
+      text-align: center;
+    }
+
+    .missao-visao-valores h2 {
+      font-size: 2.5rem;
+      JETcolor: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 40px;
+    }
+
+    .mvv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .mvv-card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 255, 255, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .mvv-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0, 255, 255, 0.3);
+    }
+
+    .mvv-card img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 15px;
+    }
+
+    .mvv-card h3 {
+      font-size: 1.5rem;
+      color: #00ffff;
+      margin-bottom: 10px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .mvv-card p {
+      font-size: 1rem;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    /* HISTÓRIA */
+    .historia {
+      padding: 100px 20px;
+      background: #0a0a0a;
+      text-align: center;
+    }
+
+    .historia h2 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 40px;
+    }
+
+    .timeline {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background: #00ffff;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+
+    .timeline-item {
+      margin: 20px 0;
+      position: relative;
+      width: 50%;
+      padding: 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .timeline-item.left {
+      left: 0;
+    }
+
+    .timeline-item.right {
+      left: 50%;
+    }
+
+    .timeline-item .timeline-content {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(0, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .timeline-item .timeline-content:hover {
+      transform: scale(1.05);
+    }
+
+    .timeline-item h3 {
+      font-size: 1.5rem;
+      color: #00ffff;
+      margin-bottom: 10px;
+    }
+
+    .timeline-item p {
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #00ffff;
+      border-radius: 50%;
+      top: 20px;
+      z-index: 1;
+    }
+
+    .timeline-item.left::before {
+      right: -10px;
+    }
+
+    .timeline-item.right::before {
+      left: -10px;
+    }
+
+    /* EQUIPE */
+    .equipe {
+      padding: 60px 20px;
+      background: #0d1117;
+      text-align: center;
+    }
+
+    .equipe h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #d1d5db;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .equipe-cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 255, 255, 0.1);
+      padding: 20px;
+      max-width: 250px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) rotateY(10deg);
+      box-shadow: 0 12px 25px rgba(0, 255, 255, 0.3);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      height: 180px;
+      object-fit: cover;
+      border: 2px solid #00ffff;
+    }
+
+    .card h3 {
+      margin: 10px 0 5px;
+      color: #00ffff;
+    }
+
+    .card p {
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 60px 20px;
+      background: #0e0e0e;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    /* FOOTER */
+    .footer {
+      background-color: #0d1117;
+      color: #ccc;
+      padding: 40px 20px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-section h3 {
+      color: #58a6ff;
+      margin-bottom: 15px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul li a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section ul li a:hover {
+      color: #00bfff;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .social-links img {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+      filter: brightness(0) invert(1);
+    }
+
+    .social-links a:hover img {
+      transform: scale(1.1);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #333;
+      font-size: 13px;
+      color: #888;
+    }
+
+    /* ANIMAÇÕES */
+    .hidden {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease-in-out;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        background: #111;
+        width: 100%;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .logo {
+        height: 60px;
+      }
+
+      .banner h1 {
+        font-size: 2.5rem;
+      }
+
+      .banner p {
+        font-size: 1.2rem;
+      }
+
+      .floating-btn {
+        bottom: 15px;
+        right: 15px;
+      }
+
+      .btn {
+        font-size: 1rem;
+        padding: 10px 30px;
+      }
+
+      .menu-toggle {
+        width: 40px;
+        height: 40px;
+      }
+
+      .menu-toggle span {
+        width: 24px;
+        height: 3px;
+        margin: 2px 0;
+      }
+
+      .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+
+      .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      .timeline::before {
+        left: 30px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+
+      .timeline-item.right {
+        left: 0;
+      }
+
+      .timeline-item.right::before,
+      .timeline-item.left::before {
+        left: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="logo-container">
+      <img src="logo.png" alt="World Tec Logo" class="logo" loading="lazy" />
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="sobre.html" aria-current="page">Sobre</a></li>
+        <li><a href="solucoes.html">Soluções</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="equipe.html">Equipe</a></li>
+        <li><a href="contacto.html">Contato</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- Banner -->
+  <section class="banner" role="banner">
+    <div id="particles-js"></div>
+    <div class="banner-content">
+      <h1>Sobre a World Tec</h1>
+      <p>Construindo o Futuro, Hoje</p>
+    </div>
+  </section>
+
+  <!-- Missão, Visão, Valores -->
+  <section class="missao-visao-valores hidden" id="missao-visao-valores">
+    <h2>Nossa Essência</h2>
+    <div class="mvv-grid">
+      <div class="mvv-card hidden" data-aos="fade-up" role="region" aria-label="Missão">
+        <img src="https://cdn-icons-png.flaticon.com/512/1087/1087840.png" alt="Ícone de Missão" loading="lazy">
+        <h3>Missão</h3>
+        <p>Transformar Angola através de soluções tecnológicas inovadoras, conectando pessoas e negócios.</p>
+      </div>
+      <div class="mvv-card hidden" data-aos="fade-up" data-aos-delay="100" role="region" aria-label="Visão">
+        <img src="https://cdn-icons-png.flaticon.com/512/1087/1087816.png" alt="Ícone de Visão" loading="lazy">
+        <h3>Visão</h3>
+        <p>Ser a principal referência em tecnologia em África, com soluções pensadas localmente.</p>
+      </div>
+      <div class="mvv-card hidden" data-aos="fade-up" data-aos-delay="200" role="region" aria-label="Valores">
+        <img src="https://cdn-icons-png.flaticon.com/512/1087/1087815.png" alt="Ícone de Valores" loading="lazy">
+        <h3>Valores</h3>
+        <p>Inovação, segurança, colaboração e compromisso com a excelência.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- História -->
+  <section class="historia hidden" id="historia">
+    <h2>Nossa Jornada</h2>
+    <div class="timeline">
+      <div class="timeline-item left hidden" data-aos="fade-right">
+        <div class="timeline-content">
+          <h3>2023 - Fundação</h3>
+          <p>A World Tec nasce com a visão de digitalizar Angola com soluções inovadoras.</p>
+        </div>
+      </div>
+      <div class="timeline-item right hidden" data-aos="fade-left">
+        <div class="timeline-content">
+          <h3>2024 - Primeiro Projeto</h3>
+          <p>Lançamos o nosso primeiro sistema nacional de registo e gestão inteligente para hospitais, interligado com serviços públicos e pronto para transformar a saúde em Angola.</p>
+        </div>
+      </div>
+      <div class="timeline-item left hidden" data-aos="fade-right">
+        <div class="timeline-content">
+          <h3>2023 - Expansão</h3>
+          <p>Expandimos para a integração governamental, conectando setores como justiça, finanças e saúde numa só plataforma inteligente.</p>
+        </div>
+      </div>
+      <div class="timeline-item right hidden" data-aos="fade-left">
+        <div class="timeline-content">
+          <h3>2025 - Liderança</h3>
+          <p>Estamos a construir o caminho para nos tornarmos líderes em soluções digitais seguras e integradas em Angola.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipe -->
+  <section class="equipe hidden" id="equipe">
+    <h2>Nosso Time</h2>
+    <div class="equipe-cards">
+      <div class="card hidden" data-aos="zoom-in" role="region" aria-label="Ariclene Pedro">
+        <img src="Lemos.jpeg" alt="Ariclene Pedro, Fundador e CEO da World Tec" loading="lazy">
+        <h3>Ariclene Pedro</h3>
+        <p>Fundador & CEO</p>
+      </div>
+      <div class="card hidden" data-aos="zoom-in" data-aos-delay="100" role="region" aria-label="Adolfo Figueiredo">
+        <img src="Suzana.jpeg" alt="Adolfo Figueiredo, Desenvolvedor Back-end da World Tec" loading="lazy">
+        <h3>Adolfo Figueiredo</h3>
+        <p>Desenvolvedor Back-end</p>
+      </div>
+      <div class="card hidden" data-aos="zoom-in" data-aos-delay="200" role="region" aria-label="Ramiro Francisco">
+        <img src="semft.jpeg" alt="Ramiro Francisco, Designer UI/UX da World Tec" loading="lazy">
+        <h3>Ramiro Francisco</h3>
+        <p>Designer UI/UX</p>
+      </div>
+      <div class="card hidden" data-aos="zoom-in" data-aos-delay="300" role="region" aria-label="Domingos Calandula">
+        <img src="semft.jpeg" alt="Domingos Calandula, Desenvolvedor Front-end da World Tec" loading="lazy">
+        <h3>Domingos Calandula</h3>
+        <p>Desenvolvedor Front-end</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta hidden">
+    <h2>Faça Parte do Futuro</h2>
+    <p>Transforme seu negócio com nossas soluções tecnológicas. Entre em contato hoje!</p>
+    <a href="index.html#contato" class="btn" role="button" aria-label="Entre em contato">Entre em Contato</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Links Rápidos</h3>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="index.html#servicos">Serviços</a></li>
+          <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contato</h3>
+        <p>Email: <a href="mailto:contato@wtec.store">contato@wtec.store</a></p>
+        <p>Telefone: <a href="tel:+244959499380">+244 959 499 380</a></p>
+        <p>WhatsApp: <a href="https://wa.me/959499380" target="_blank">Fale conosco</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Siga-nos</h3>
+        <div class="social-links">
+          <a href="https://facebook.com" target="_blank" title="Facebook">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" loading="lazy">
+          </a>
+          <a href="https://instagram.com" target="_blank" title="Instagram">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" loading="lazy">
+          </a>
+          <a href="https://linkedin.com" target="_blank" title="LinkedIn">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" loading="lazy">
+          </a>
+          <a href="https://x.com" target="_blank" title="Twitter/X">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X" loading="lazy">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 World Tec. Todos os direitos reservados. Ícones por <a href="https://flaticon.com" target="_blank">Flaticon</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Botão Flutuante -->
+  <div class="floating-btn">
+    <a href="#missao-visao-valores" class="btn" role="button" aria-label="Conheça nossa história">Conheça Nossa História</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXX"></script>
+  <script>
+    // Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXX');
+
+    // Particles.js
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 100, density: { enable: true, value_area: 800 } },
+        color: { value: '#00ffff' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.6, random: true },
+        size: { value: 4, random: true },
+        line_linked: { enable: true, distance: 150, color: '#00ffff', opacity: 0.5, width: 1.5 },
+        move: { enable: true, speed: 3, direction: 'none', random: false }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } },
+        modes: { grab: { distance: 140, line_linked: { opacity: 1 } }, push: { particles_nb: 4 } }
+      },
+      retina_detect: true
+    });
+
+    // AOS Initialization
+    AOS.init({ duration: 1000, once: true });
+
+    // Mobile Menu Toggle
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      menuToggle.addEventListener("click", () => {
+        const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", !isExpanded);
+        menuToggle.classList.toggle("active");
+        navLinks.classList.toggle("active");
+      });
+
+      // Intersection Observer for Animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      const hiddenElements = document.querySelectorAll(".hidden");
+      hiddenElements.forEach((el) => observer.observe(el));
+
+      // Close mobile menu when a link is clicked
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.classList.remove("active");
+          navLinks.classList.remove("active");
+        });
+      });
+    });
+  </script>
+</body>
+</html>
